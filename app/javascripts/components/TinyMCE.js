@@ -2,8 +2,8 @@ import React from 'react';
 import { findDOMNode } from 'react-dom';
 import isEqual from 'lodash/lang/isEqual';
 import clone from 'lodash/lang/clone';
-import uuid from '../helpers/uuid';
-import ucFirst from '../helpers/ucFirst';
+import uuid from 'javascripts/helpers/uuid';
+import ucFirst from 'javascripts/helpers/ucFirst';
 
 // Include all of the Native DOM and custom events from:
 // https://github.com/tinymce/tinymce/blob/master/tools/docs/tinymce.Editor.js#L5-L12
