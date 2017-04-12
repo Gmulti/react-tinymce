@@ -123,16 +123,9 @@ class TinyMCE extends React.Component{
   }
 }
 
-TinyMCE.propType = {
-  config: React.PropTypes.object,
-  content: React.PropTypes.string,
-  id: React.PropTypes.string,
-  className: React.PropTypes.string
-}
-
 // add handler propTypes
 HANDLER_NAMES.forEach((name) => {
   TinyMCE.propTypes[name] = React.PropTypes.func;
 });
 
-module.exports = TinyMCE;
+export default TinyMCE;

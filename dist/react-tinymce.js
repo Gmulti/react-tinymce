@@ -151,6 +151,10 @@ var __makeRelativeRequire = function(require, mappings, pref) {
 require.register("javascripts/components/TinyMCE.js", function(exports, require, module) {
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -301,19 +305,14 @@ var TinyMCE = function (_React$Component) {
   return TinyMCE;
 }(_react2.default.Component);
 
-TinyMCE.propType = {
-  config: _react2.default.PropTypes.object,
-  content: _react2.default.PropTypes.string,
-  id: _react2.default.PropTypes.string,
-  className: _react2.default.PropTypes.string
-};
-
 // add handler propTypes
+
+
 HANDLER_NAMES.forEach(function (name) {
   TinyMCE.propTypes[name] = _react2.default.PropTypes.func;
 });
 
-module.exports = TinyMCE;
+exports.default = TinyMCE;
 
 });
 
@@ -337,13 +336,6 @@ var count = 0;
 module.exports = function uuid() {
   return 'react-tinymce-' + count++;
 };
-
-});
-
-require.register("javascripts/main.js", function(exports, require, module) {
-'use strict';
-
-module.exports = require('javascripts/components/TinyMCE');
 
 });
 
