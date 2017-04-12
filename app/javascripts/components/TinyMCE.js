@@ -29,31 +29,17 @@ const HANDLER_NAMES = EVENTS.map((event) => {
   return 'on' + ucFirst(event);
 });
 
-const TinyMCE = React.createClass({
-  displayName: 'TinyMCE',
 
-  propTypes: {
-    config: React.PropTypes.object,
-    content: React.PropTypes.string,
-    id: React.PropTypes.string,
-    className: React.PropTypes.string
-  },
-
-  getDefaultProps() {
-    return {
-      config: {},
-      content: ''
-    };
-  },
+class TinyMCE extends React.Component{
 
   componentWillMount() {
     this.id = this.id || this.props.id || uuid();
-  },
+  }
 
   componentDidMount() {
     const config = clone(this.props.config);
     this._init(config);
-  },
+  }
 
   componentWillReceiveProps(nextProps) {
     if (!isEqual(this.props.config, nextProps.config)) {
@@ -62,18 +48,18 @@ const TinyMCE = React.createClass({
     if (!isEqual(this.props.id, nextProps.id)) {
       this.id = nextProps.id;
     }
-  },
+  }
 
   shouldComponentUpdate(nextProps) {
     return (
       !isEqual(this.props.content, nextProps.content) ||
       !isEqual(this.props.config, nextProps.config)
     );
-  },
+  }
 
   componentWillUnmount() {
     this._remove();
-  },
+  }
 
   render() {
     return this.props.config.inline ? (
@@ -89,7 +75,7 @@ const TinyMCE = React.createClass({
         defaultValue={this.props.content}
       />
     );
-  },
+  }
 
   _init(config, content) {
     if (this._isInit) {
@@ -129,13 +115,20 @@ const TinyMCE = React.createClass({
     findDOMNode(this).style.hidden = '';
 
     this._isInit = true;
-  },
+  }
 
   _remove() {
     tinymce.EditorManager.execCommand('mceRemoveEditor', true, this.id);
     this._isInit = false;
   }
-});
+}
+
+TinyMCE.propType = {
+  config: React.PropTypes.object,
+  content: React.PropTypes.string,
+  id: React.PropTypes.string,
+  className: React.PropTypes.string
+}
 
 // add handler propTypes
 HANDLER_NAMES.forEach((name) => {
